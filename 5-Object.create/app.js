@@ -5,7 +5,7 @@ var car = {
 	}
 }
 
-Object.prototype.create = function (o) {
+Object.create = function (o) {
 	var f = function () {};
 	f.prototype = o;
 	return new f();

@@ -6,8 +6,14 @@ $('li').click(function() {
     $(this).css('color', 'green');
 });
 
-//change color for link whose href attribute starts with wwwl.g
+//change color for link whose href attribute starts with www.g
 $('a[href^="www.g"]').css('color', 'gray');
+
+//change color of link whose href attribute end with n.com
+$('a[href$="n.com"]').css('color', 'pink');
+
+//change color of link whose href attribute has ceb anywhere
+$('a[href*="ceb"]').css('color', 'orange');
 
 //change attr of last link 
 $('a:last').attr({
