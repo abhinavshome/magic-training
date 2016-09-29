@@ -14,13 +14,16 @@ $(".droppable").droppable({
     drop: function(event, ui) {
         if (itemsDropped < maxItems) {
             itemsDropped++;
-            var clone = ui.draggable.clone()
-            console.log(clone);
-            $(this).append(clone);
-            clone.css('border', '1px solid blue')
-            //clone.draggable("option", "revert", false);
-            //clone.draggable('disable');
-            clone.css({ left: itemsDropped * 52 + 100, top: 50, 'z-index': 1000, position: 'absolute' });
+            //comment this for not clone
+            var item = ui.draggable.clone();
+            //uncomment this for not clone
+            //var item = ui.draggable
+            $(this).append(item);
+            item.css('border', '1px solid blue')
+            // uncomment these for not clone
+            //item.draggable("option", "revert", false);
+            //item.draggable('disable');
+            item.css({ left: itemsDropped * 52 + 100, top: 50, 'z-index': 1000, position: 'absolute' });
             $(this).css('border', 'none');
         }
     },
@@ -28,12 +31,10 @@ $(".droppable").droppable({
         ui.helper.css({ left: 100, top: 0, 'z-index': 1000, position: 'absolute' });
         ui.helper.css('border', '1px solid red');
         $(this).css('background-color', 'yellow');
-        //$(this).html('drop here');
     },
     deactivate: function(event, ui) {
         ui.helper.css('border', 'none');
         $(this).css('background-color', 'lightgray');
-        //$(this).html('');
     },
     over: function(event, ui) {
         $(this).css('border', '1px solid red');
