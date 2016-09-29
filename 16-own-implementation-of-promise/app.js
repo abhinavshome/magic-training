@@ -40,6 +40,34 @@ promise.then(function(foodItem) {
     console.log('he ditched me because of ', reason);
 });
 
+/* Own implementation with chaining
+
+function Promise() {
+    var callback = null,
+        state = 'unresolved',
+        promiseToReturn = null;
+
+    this.then = function(cb) {
+        callback = cb;
+        promiseToReturn = new Promise();
+        return promiseToReturn;
+    };
+
+    this.resolve = function(data) {
+        state = 'resolved';
+        var returnVal = callback && callback(data);
+        if (returnVal && returnVal.constructor == Promise) {
+            returnVal.onResolve = function(d) {
+                promiseToReturn.resolve(d);
+            }
+        } else {
+            promiseToReturn && promiseToReturn.resolve(returnVal);
+        }
+        this.onResolve && this.onResolve(data);
+    };
+}
+
+*/
 
 
 
