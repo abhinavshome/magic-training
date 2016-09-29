@@ -1,7 +1,6 @@
 //added cloning support
 $(".draggable").draggable({
     helper: 'clone',
-    revert: true,
     stop: function(event, ui) {
         ui.helper.css('background-color', 'red');
         console.log('dragging done;');
@@ -15,14 +14,22 @@ $(".droppable").droppable({
         if (itemsDropped < maxItems) {
             itemsDropped++;
             //comment this for not clone
-            var item = ui.draggable.clone();
+            if(!ui.draggable.hasClass('is-clone')){
+                var item = ui.draggable.clone();
+                item.addClass('is-clone');
+            } else {
+                var item = ui.draggable;
+            }
+            item.draggable();
             //uncomment this for not clone
             //var item = ui.draggable
             $(this).append(item);
             item.css('border', '1px solid blue')
             // uncomment these for not clone
-            //item.draggable("option", "revert", false);
+            // item.draggable("option", "revert", false);
             //item.draggable('disable');
+            //comment this line for not clone
+            // item.removeClass('ui-draggable');
             item.css({ left: itemsDropped * 52 + 100, top: 50, 'z-index': 1000, position: 'absolute' });
             $(this).css('border', 'none');
         }
