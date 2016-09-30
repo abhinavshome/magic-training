@@ -1,12 +1,15 @@
 var booksCart = angular.module('booksCart', []);
 
 booksCart.controller('bookCtrl', function($scope) {
-    
-
+    // $scope.message = 'hello world';
     $scope.cart = {
         totalPrice: 0,
         items: []
     };
+
+    // $scope.showMessage = function () {
+    //     console.log(lowecaseFilter($scope.message));
+    // }
 
     $scope.books = [{
         title: 'The Alcheimst',
@@ -17,7 +20,7 @@ booksCart.controller('bookCtrl', function($scope) {
         title: 'The monk who sold his ferrari',
         author: 'Robin Sharma',
         price: 20,
-        rating: 1
+        rating: 2
     }, {
         title: 'THE NIGHTINGALE',
         author: 'Kristin Hannah',
@@ -54,8 +57,9 @@ booksCart.controller('bookCtrl', function($scope) {
     };
 
     $scope.addBook = function () {
-        console.log($scope.newBook);
+        //$scope.books.unshift(angular.copy($scope.newBook));
         $scope.books.unshift($scope.newBook);
+        $scope.newBook = {};
     }
 
     function findInCart(title) {
