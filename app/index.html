@@ -4,6 +4,10 @@
 <head>
 	<style>
 		.book {background-color: lightgray; margin: 5px; padding: 5px;}
+		.low {background-color: pink}
+		.high {background-color: orange}
+		.costly {border: 1px solid red;}
+		.cart td {background-color: lightgray;}
 	</style> 
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
@@ -11,11 +15,34 @@
 
 <body>
     <div ng-controller="bookCtrl">
-        <div ng-repeat="book in books" class="book" ng-show="book.rating > 1 && book.price > 10">
+    	<div class="cart">
+    		<table>
+    			<tr>
+    				<th>Item</th>
+    				<th>Qty</th>
+    				<th>Price</th>
+    			</tr>
+    			<tr ng-repeat="item in cart.items">
+    				<td>{{item.title}}</td>
+    				<td>{{item.qty}}</td>
+    				<td>{{item.price}}</td>
+    			</tr>
+    			<tr>
+    				<td colspan="2">Total Price</td>
+    				<td>{{cart.totalPrice}}</td>
+    			</tr>
+    		</table>
+    	</div>
+        <div ng-repeat="book in books" class="book" ng-show="book.rating > 1" ng-class="{low: book.rating < 3, high: book.rating >= 3, costly: book.price >= 50}">
             <div><b>{{book.title}}</b></div>
             <div><i>{{book.author}}</i></div>
             <div>{{book.rating}}</div>
             <div>${{book.price}}</div>
+            <div>
+            	<button ng-click="rateUp(book)">&uarr;</button>
+            	<button ng-click="rateDown(book)">&darr;</button>
+            	<button ng-click="addToCart(book)">add to cart</button>
+            </div>
         </div>
     </div>
 </body>
