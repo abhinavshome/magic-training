@@ -1,20 +1,23 @@
 <!DOCTYPE HTML>
-<html>
+<html ng-app="booksCart">
+
 <head>
 	<style>
-		.d1 {padding: 10px;background-color: red;}
-		.d2 {padding: 10px;background-color: blue;}
-		.d3 {padding: 10px;background-color: green;}
-	</style>
+		.book {background-color: lightgray; margin: 5px; padding: 5px;}
+	</style> 
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
 </head>
+
 <body>
-	<button>click</button>
-
-<h5>Chat with worker</h5>
-<div id="chatroom"></div>
-<input type="text" id="msg">
-<button id="send">Send</button>
-
-<script src="app.js"></script>
+    <div ng-controller="bookCtrl">
+        <div ng-repeat="book in books" class="book" ng-show="book.rating > 1 && book.price > 10">
+            <div><b>{{book.title}}</b></div>
+            <div><i>{{book.author}}</i></div>
+            <div>{{book.rating}}</div>
+            <div>${{book.price}}</div>
+        </div>
+    </div>
 </body>
+
 </html>
