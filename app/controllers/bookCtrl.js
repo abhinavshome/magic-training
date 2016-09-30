@@ -9,7 +9,7 @@ booksCart.controller('bookCtrl', function($scope, bookService) {
     //     console.log(lowecaseFilter($scope.message));
     // }
 
-    $scope.books = bookService.books;
+    $scope.books = bookService.getBooks();
 
 
     $scope.rateUp = function(book) {
