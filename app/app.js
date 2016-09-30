@@ -1,6 +1,8 @@
 var booksCart = angular.module('booksCart', []);
 
 booksCart.controller('bookCtrl', function($scope) {
+    
+
     $scope.cart = {
         totalPrice: 0,
         items: []
@@ -50,6 +52,11 @@ booksCart.controller('bookCtrl', function($scope) {
         }
         $scope.cart.totalPrice += book.price;
     };
+
+    $scope.addBook = function () {
+        console.log($scope.newBook);
+        $scope.books.unshift($scope.newBook);
+    }
 
     function findInCart(title) {
         var foundItems = $scope.cart.items.filter(function (item) {
