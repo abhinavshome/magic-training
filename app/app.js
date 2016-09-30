@@ -1,4 +1,22 @@
-var booksCart = angular.module('booksCart', []);
+var booksCart = angular.module('booksCart', ['ngRoute']);
+
+booksCart.config(function($routeProvider) {
+    $routeProvider
+        .when('/', {
+            templateUrl: 'home.html',
+            controller: 'bookCtrl'
+        })
+        .when('/add-book', {
+            templateUrl: 'add-book.html',
+            controller: 'addBookCtrl'
+        })
+        .when('/about', {
+            template: '<h1>About</h1>'
+        })
+        .otherwise({
+            redirectTo: '/about'
+        });
+});
 
 booksCart.controller('bookCtrl', function($scope) {
     // $scope.message = 'hello world';
@@ -41,9 +59,9 @@ booksCart.controller('bookCtrl', function($scope) {
         book.rating > 1 && book.rating--;
     };
 
-    $scope.addToCart = function (book) {
+    $scope.addToCart = function(book) {
         var item = findInCart(book.title);
-        if(!item) {
+        if (!item) {
             item = {
                 title: book.title,
                 qty: 1,
@@ -56,20 +74,16 @@ booksCart.controller('bookCtrl', function($scope) {
         $scope.cart.totalPrice += book.price;
     };
 
-    $scope.addBook = function () {
+    $scope.addBook = function() {
         //$scope.books.unshift(angular.copy($scope.newBook));
         $scope.books.unshift($scope.newBook);
         $scope.newBook = {};
     }
 
     function findInCart(title) {
-        var foundItems = $scope.cart.items.filter(function (item) {
+        var foundItems = $scope.cart.items.filter(function(item) {
             return item.title == title;
         });
         return foundItems[0];
     }
 })
-
-
-
-

@@ -1,0 +1,49 @@
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .book {
+        background-color: lightgray;
+        margin: 5px;
+        padding: 5px;
+    }
+    
+    .low {
+        background-color: pink
+    }
+    
+    .high {
+        background-color: orange
+    }
+    
+    .costly {
+        border: 1px solid red;
+    }
+    
+    .cart td {
+        background-color: lightgray;
+    }
+    
+    .active {
+        color: blue;
+    }
+    
+    label {
+        width: 60px;
+        display: inline-block;
+    }
+
+    .menu {
+        background-color: orange;
+        padding: 10px;
+    }
+    .menu a {
+        color: black;
+        text-decoration: none;
+    }
+    .menu a.active {
+        text-decoration: underline;
+    }
+    .menu h3 {
+        margin: 2px 0;
+    }
