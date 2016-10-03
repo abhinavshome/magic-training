@@ -1,4 +1,4 @@
-booksCart.controller('bookCtrl', function($scope, bookService) {
+booksCart.controller('bookCtrl', function($scope, bookService, $http) {
     // $scope.message = 'hello world';
     $scope.cart = {
         totalPrice: 0,
@@ -9,9 +9,18 @@ booksCart.controller('bookCtrl', function($scope, bookService) {
     //     console.log(lowecaseFilter($scope.message));
     // }
 
-    $scope.books = bookService.getBooks();
+    bookService
+        .getBooks()
+        .then(function(response) {
+            $scope.books = response.data;
+        });
 
-    $scope.logStarClick = function (starNum) {
+
+    // bookService.getBooks().then(function (response) {
+    //     $scope.books = response.data;    
+    // });
+
+    $scope.logStarClick = function(starNum) {
         console.log(starNum + ' star was clicked');
     }
 
@@ -38,15 +47,15 @@ booksCart.controller('bookCtrl', function($scope, bookService) {
         $scope.cart.totalPrice += book.price;
     };
 
-    $scope.highRated = function (book) {
+    $scope.highRated = function(book) {
         return book.rating > 2;
     };
 
-    $scope.costly = function (book) {
+    $scope.costly = function(book) {
         return book.price > 30;
     };
 
-    $scope.all = function (book) {
+    $scope.all = function(book) {
         return true;
     };
 

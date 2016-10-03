@@ -56,8 +56,11 @@
                 item="book" 
                 color="red"
                 on-star-click="logStarClick(numStar)"
-                >
+                ><span>rating1</span>
             </star-widget>
+            </div>
+            <div>
+                <slider item="book"></slider>
             </div>
             <div>{{book.price | currency:'&#8377;'}}</div>
             <div>

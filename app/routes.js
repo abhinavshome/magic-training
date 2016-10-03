@@ -10,7 +10,7 @@ booksCart.config(function($routeProvider) {
             controllerAs: 'ctrl'
         })
         .when('/about', {
-            template: '<h1>About</h1>'
+            templateUrl: 'templates/about.html'
         })
         .otherwise({
             redirectTo: '/about'

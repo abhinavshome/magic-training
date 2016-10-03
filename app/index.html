@@ -2,6 +2,10 @@
 <html ng-app="booksCart">
 
 <head>
+    <link rel="stylesheet" type="text/css" href="vendor/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/jquery-ui.theme.min.css">
+    <script src="vendor/jquery-3.1.1.min.js"></script>
+    <script src="vendor/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="vendor/angular.min.js"></script>
     <script src="vendor/angular-route.min.js"></script>
@@ -14,9 +18,12 @@
     <script src="services/localData.js"></script>
     <script src="filters/titlecase.js"></script>
     <script src="directives/star-widget.js"></script>
+    <script src="directives/slider.js"></script>
+    <script src="directives/tabs.js"></script>
 </head>
 
 <body>
+    <input type="text" ng-model="message" id="msg"> {{message}}
     <div class="menu" ng-controller="menuCtrl">
         <h3>BooksCart</h3>
         <a href="#/" ng-class="{active: isCurrent('')}">Home</a> |
