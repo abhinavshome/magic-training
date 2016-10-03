@@ -1,5 +1,9 @@
 var booksCart = angular.module('booksCart', ['ngRoute']);
 
+setTimeout(function () {
+    angular.bootstrap(document, ['booksCart']);    
+}, 0);
+
 booksCart.config(function($routeProvider) {
     $routeProvider
         .when('/', {
