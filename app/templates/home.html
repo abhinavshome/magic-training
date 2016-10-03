@@ -31,10 +31,27 @@
             <button ng-class="{active: sortOrder == 'price'}" ng-click="sortOrder = 'price'">price &uarr;</button>
             <button ng-class="{active: sortOrder == '-price'}" ng-click="sortOrder = '-price'">price &darr;</button>
         </div>
-        <div ng-repeat="book in books | limitTo:showBooks | orderBy:sortOrder track by $index" class="book" ng-show="book.rating > 1" ng-class="{low: book.rating < 3, high: book.rating >= 3, costly: book.price >= 50}">
-            <div><b>{{book.title | uppercase | limitTo:20}}</b></div>
+        <div>
+            <label>Filter:</label>
+            <input type="text" ng-model="filterText">
+        </div>
+        <div>
+            <label>Object:</label>
+            <input type="text" ng-model="filterObj.title" placeholder="title">
+            <input type="text" ng-model="filterObj.author" placeholder="author">
+        </div>
+        <div>
+            <label>Function:</label>
+            <button ng-click="functionFilter=highRated" ng-class="{active: functionFilter==highRated}">high rated</button>
+            <button ng-click="functionFilter=costly" ng-class="{active: functionFilter==costly}">costly</button>
+            <button ng-click="functionFilter=all" ng-class="{active: functionFilter==all}">all</button>
+        </div>
+
+        <div ng-repeat="book in books | limitTo:showBooks | orderBy:sortOrder | filter:filterText | filter:filterObj | filter: functionFilter track by $index" class="book" ng-show="book.rating > 1" ng-class="{low: book.rating < 3, high: book.rating >= 3, costly: book.price >= 50}">
+            <div><b>{{book.title| titlecase | limitTo:20}}</b></div>
             <div><i>{{book.author | lowercase}}</i></div>
             <div>{{book.rating}}</div>
+            <div><span star-widget></span></div>
             <div>{{book.price | currency:'&#8377;'}}</div>
             <div>
                 <button ng-click="rateUp(book)">&uarr;</button>

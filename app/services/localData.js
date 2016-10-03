@@ -1,6 +1,6 @@
 booksCart.service('localData', function() {
 
-    this.save = function (key, data) {
+    this.set = function (key, data) {
     	localStorage.setItem(key, JSON.stringify(data) || []);
     };
 

@@ -35,7 +35,17 @@ booksCart.controller('bookCtrl', function($scope, bookService) {
         $scope.cart.totalPrice += book.price;
     };
 
-    
+    $scope.highRated = function (book) {
+        return book.rating > 2;
+    };
+
+    $scope.costly = function (book) {
+        return book.price > 30;
+    };
+
+    $scope.all = function (book) {
+        return true;
+    };
 
     function findInCart(title) {
         var foundItems = $scope.cart.items.filter(function(item) {
