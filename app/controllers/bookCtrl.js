@@ -11,6 +11,9 @@ booksCart.controller('bookCtrl', function($scope, bookService) {
 
     $scope.books = bookService.getBooks();
 
+    $scope.logStarClick = function (starNum) {
+        console.log(starNum + ' star was clicked');
+    }
 
     $scope.rateUp = function(book) {
         book.rating < 5 && book.rating++

@@ -51,7 +51,14 @@
             <div><b>{{book.title| titlecase | limitTo:20}}</b></div>
             <div><i>{{book.author | lowercase}}</i></div>
             <div>{{book.rating}}</div>
-            <div><span star-widget></span></div>
+            <div>
+            <star-widget 
+                item="book" 
+                color="red"
+                on-star-click="logStarClick(numStar)"
+                >
+            </star-widget>
+            </div>
             <div>{{book.price | currency:'&#8377;'}}</div>
             <div>
                 <button ng-click="rateUp(book)">&uarr;</button>
